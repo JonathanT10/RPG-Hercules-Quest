@@ -27,13 +27,18 @@ function choice(choiceOne, resultOne, resultTwo, secondChoice, secondResult){
     }return result;
 }
 
-function randomString(theArray){
+function randomAttack(theArray){
   result = theArray[Math.floor(Math.random()*theArray.length)];
   return result;
 }
 
 function attack(heroHealth, heroAttack, monsterHealth, monsterAttack){
-  while(heroHealth >= 0){
+  while(heroHealth >= 0 && monsterHealth >= 0){
+    monsterHealth -= heroAttack;
+    randomAttack(monsterAttack);
+    heroHealth -= monsterAttack;
+    console.log("Hero " + heroHealth, "Monster " + monsterHealth)
+
     
   }
     
@@ -46,11 +51,7 @@ let lionHealth = 40;
 let hydraHealth = 60;
 let cerberusHealth = 80;
 let hercHealth = 80;
-const hercAttack = {
-    name: "Spear",
-    damage: 10,
-}
-
+let hercAttack = 15;
 
 alert("Welcome Hercules! Click OK to begin your Quest for King Eurystheus");
 
@@ -62,8 +63,10 @@ let choiceLow = ("You have managed to slip around the Lion and take up good posi
 let choiceHydra = ("You head towards the swap of Lern to search for the Hydra.\n You are ambushed!\n You did not survive the battle...");
 
 
-firstDecision = choice(firstChoice, choiceLion, choiceHydra, choiceHigh, choiceLow);
+let firstDecision = choice(firstChoice, choiceLion, choiceHydra, choiceHigh, choiceLow);
 
+let monsterAttack = randomAttack(lionAttack);
+let firstBattle = attack(hercHealth, hercAttack, lionHealth, monsterAttack);
 
 
 
