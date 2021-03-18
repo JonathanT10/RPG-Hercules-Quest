@@ -1,4 +1,4 @@
-
+"use strict";
 //function health()
 
 
@@ -19,18 +19,29 @@ function choice(choiceOne, resultOne, resultTwo, secondChoice, secondResult){
            location.reload();
         }else{
           let live = alert(secondResult);
-          result = live;
         }
     }else{
       alert(resultTwo);
       location.reload();
-    }return result;
+    }
 }
 
 function randomAttack(theArray){
-  result = theArray[Math.floor(Math.random()*theArray.length)];
+  let result = theArray[Math.floor(Math.random()*theArray.length)];
   return result;
 }
+
+function chooseAttack(object, objectTwo){
+  let choose = window.confirm("To choose the Sword attack click OK.\n To choose the Special attack click Cancel.");
+if(choose === false){
+  randomAttack(objectTwo);
+  result = objectTwo;
+}else{
+  result = object;
+}return result;
+}
+
+
 
 function attack(heroHealth, heroAttack, monsterHealth, monsterAttack){
   while(heroHealth >= 0 && monsterHealth >= 0){
@@ -44,14 +55,25 @@ function attack(heroHealth, heroAttack, monsterHealth, monsterAttack){
     
 }
 
-let lionAttack = [5, 10, 15];
-let hydraAttack = [10, 15, 20];
-let cerberusAttack = [15, 20, 25];
+let lionAttack = [5, 10, 15, 20];
+let hydraAttack = [10, 15, 20, 30];
+let cerberusAttack = [15, 20, 25, 40];
 let lionHealth = 40;
 let hydraHealth = 60;
 let cerberusHealth = 80;
 let hercHealth = 80;
-let hercAttack = 15;
+let hercAttack = {
+  name: "Spear",
+  damage: 10,
+}
+let herAttackTwo = {
+  name: "Sword",
+  damage: 20,
+}
+let herAttackThree = {
+  name: "Special",
+  damage: [30, 15, 45, 5, 10, 20, 25, 35, 40],
+}
 
 alert("Welcome Hercules! Click OK to begin your Quest for King Eurystheus");
 
@@ -66,14 +88,9 @@ let choiceHydra = ("You head towards the swap of Lern to search for the Hydra.\n
 let firstDecision = choice(firstChoice, choiceLion, choiceHydra, choiceHigh, choiceLow);
 
 let monsterAttack = randomAttack(lionAttack);
-let firstBattle = attack(hercHealth, hercAttack, lionHealth, monsterAttack);
+let heroAttack = randomAttack(herAttackThree.damage);
+let firstBattle = attack(hercHealth, heroAttack, lionHealth, monsterAttack);
 
 
 
 
-
-let counter = 100
-for(i = counter; i > 0; i--){
-    
-}
-console.log(counter);
