@@ -34,21 +34,23 @@ function randomAttack(theArray){
 function chooseAttack(object, objectTwo){
   let choose = window.confirm("To choose the Sword attack click OK.\n To choose the Special attack click Cancel.");
 if(choose === false){
-  randomAttack(objectTwo);
-  result = objectTwo;
+   let result = randomAttack(objectTwo);
+  return result;
 }else{
-  result = object;
+   let result = randomAttack(object);
+   return result;
 }return result;
 }
 
 
-
-function attack(heroHealth, heroAttack, monsterHealth, monsterAttack){
+function attack(heroHealth, monsterHealth, monsterAttack){
   while(heroHealth >= 0 && monsterHealth >= 0){
+    let heroAttack = chooseAttack(hercAttack.damage, hercAttackTwo.damage)
     monsterHealth -= heroAttack;
     randomAttack(monsterAttack);
     heroHealth -= monsterAttack;
-    console.log("Hero " + heroHealth, "Monster " + monsterHealth)
+    alert("Hero health is " + heroHealth + "\n Monster health is " + monsterHealth);
+    console.log("Hero " + heroHealth + "Monster " + monsterHealth)
 
     
   }
@@ -64,13 +66,13 @@ let cerberusHealth = 80;
 let hercHealth = 80;
 let hercAttack = {
   name: "Spear",
-  damage: 10,
+  damage: [5, 10, 15]
 }
-let herAttackTwo = {
+let hercAttackTwo = {
   name: "Sword",
-  damage: 20,
+  damage: [5, 10, 15, 20]
 }
-let herAttackThree = {
+let hercAttackThree = {
   name: "Special",
   damage: [30, 15, 45, 5, 10, 20, 25, 35, 40],
 }
@@ -88,8 +90,8 @@ let choiceHydra = ("You head towards the swap of Lern to search for the Hydra.\n
 let firstDecision = choice(firstChoice, choiceLion, choiceHydra, choiceHigh, choiceLow);
 
 let monsterAttack = randomAttack(lionAttack);
-let heroAttack = randomAttack(herAttackThree.damage);
-let firstBattle = attack(hercHealth, heroAttack, lionHealth, monsterAttack);
+let heroAttack = randomAttack(hercAttackThree.damage);
+let firstBattle = attack(hercHealth, lionHealth, monsterAttack);
 
 
 

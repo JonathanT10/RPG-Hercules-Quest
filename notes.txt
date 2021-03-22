@@ -1,0 +1,58 @@
+<script src="wsarrays.js" type="text/javascript"></script>
+
+
+
+let choose = window.confirm("Do you want to go to " + yourDestination + "?");
+
+while(choose === false){
+    let yourDestination = randomString(destination);
+    choose = window.confirm("Do you want to go to " + yourDestination + "?");
+}
+ console.log(yourDestination);
+
+function randomString(theArray){
+    result = theArray[Math.floor(Math.random()*theArray.length)];
+    return result;
+}
+function confirmRandom(string, array){
+    let choose = window.confirm("Please confirm the option for your day trip by clicking OK, or cancel for another option: " + string)
+while(choose === false){
+    string = randomString(array);
+    choose = window.confirm("Please confirm the option for your day trip by clicking OK, or cancel for another option: " + string);
+
+}return string;
+
+
+______START_____
+
+function chooseAttack(object, objectTwo){
+  let choose = window.confirm("To choose the Sword attack click OK.\n To choose the Special attack click Cancel.");
+if(choose === false){
+  randomAttack(objectTwo);
+  result = objectTwo;
+}else{
+  result = object;
+}return result;
+}
+
+let lionAttack = [5, 10, 15, 20];
+let hydraAttack = [10, 15, 20, 30];
+let cerberusAttack = [15, 20, 25, 40];
+let lionHealth = 40;
+let hydraHealth = 60;
+let cerberusHealth = 80;
+let hercHealth = 80;
+let hercAttack = {
+  name: "Spear",
+  damage: 10,
+}
+let herAttackTwo = {
+  name: "Sword",
+  damage: 20,
+}
+let herAttackThree = {
+  name: "Special",
+  damage: [30, 15, 45, 5, 10, 20, 25, 35, 40],
+
+
+et heroAttack = randomAttack(herAttackThree.damage);
