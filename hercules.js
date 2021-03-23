@@ -10,6 +10,9 @@
     //creature.attack = attack;
 
 //}
+function reloadPage(){
+  location.reload();
+}
 
 function runGame(scenario, monsterBattle, monsterHealthBattle){
   if(scenario === true){
@@ -23,6 +26,7 @@ function runGame(scenario, monsterBattle, monsterHealthBattle){
     }
   }else{
     alert("GAME OVER!")
+    reloadPage;
 
   }return
 }
@@ -34,13 +38,13 @@ function choice(choiceOne, resultOne, resultTwo, secondChoice, secondResult){
         let rOne = window.confirm(resultOne);
         if(rOne === true){
           alert(secondChoice);
-           location.reload();
+           reloadPage;
         }else{
           alert(secondResult);
         }
     }else{
       alert(resultTwo);
-      location.reload();
+      reloadPage;
     }return cOne;
 }
 
@@ -107,24 +111,42 @@ let hydraChoice = ("As you approach the hydra's swap, you contemplate your strat
 let hydraForrest = ("You decide to cut through the dark forrest \n After some time, you hear russelling in the foilage around you.... \n You are attacked from the rear by a pack of giant worlves... \n You do not survive the battle...");
 let choiceLure = ("You attempt to lure the hydra to dry ground, but the creature is to smart. \n The hydra circles around to attack you from behind. \n You have been killed in battle with the hydra...");
 let choiceCharge = ("You charge straight in to attack the hydra..\n You catch the creature off guard, but it will still be a tough battle.");
-let finalDestination = ("You now set out to capture the guard dog of the underworl! \n You must choose your path to the underworld:\n To travel through the caves at the base of Mount Ossa: Click Cancel\n To travel through the portal in the shallows of Lake Prespa: Click OK ");
+let finalDestination = ("You now set out to capture the guard dog of the underworl! \n You must choose your path to the underworld:\n To travel through the caves at the base of Mount Ossa: Click OK\n To travel through the portal in the shallows of Lake Prespa: Click Cancel ");
 let mountOssa = ("As you travel through the caves below Mount Ossa, you come to a fork. Do you go left or right?\n Click OK for left and Cancel for right.")
 let wrongWay = ("You continue down the cave, it becomes warmer and warmer the further you go. \n Before you can react a rock comes loose, and you begin to fall! \n You fall into a massive lava pit, from which there is no escape!");
 let lakePrespa = ("You wade into the lake were the portal to the underworld is hidden. \n You enter the portal, you are immediatly transported to the underworld. \n You quickly discover that the portal is no longer secret, as an army of the dead are there to meet you!");
 let pathToGlory = ("As you travel through the cave, you begin to hear the panting of Cerberus.\n This will be quite the battle, you must defeat Cerberus to capture the creature!")
 
 
-let firstDecision = choice(firstChoice, choiceLion, choiceHydra, choiceHigh, choiceLow);
-runGame(firstDecision, lionAttack, lionHealth);
-let secondDecision = choice(roadToHydra, hydraChoice, hydraForrest, choiceCharge, choiceLure);
-let stopRunning = runGame(secondDecision, hydraAttack, hydraHealth);
-console.log(stopRunning);
-let thirdDecision = choice(finalDestination, mountOssa, lakePrespa, wrongWay, pathToGlory);
-runGame(thirdDecision, cerberusAttack, cerberusHealth);
+// let firstDecision = choice(firstChoice, choiceLion, choiceHydra, choiceHigh, choiceLow);
+// while(firstDecision === false){
+//   alert("GAME OVER!")
+//   alert("Welcome Hercules! Click OK to begin your Quest for King Eurystheus");
+//   firstDecision = choice(firstChoice, choiceLion, choiceHydra, choiceHigh, choiceLow);
+// }
+// runGame(firstDecision, lionAttack, lionHealth);
+// let secondDecision = choice(roadToHydra, hydraChoice, hydraForrest, choiceCharge, choiceLure);
+// let stopRunning = runGame(secondDecision, hydraAttack, hydraHealth);
+// console.log(stopRunning);
+// let thirdDecision = choice(finalDestination,  mountOssa, lakePrespa, wrongWay, pathToGlory);
+//runGame(thirdDecision, cerberusAttack, cerberusHealth);
 
 
+function runGameReal(decision, firstPath, correctPath, deathPath, wrongChoice, correctChoice, monsterARunGame, monsterHRunGame){
+  let decision = choice(firstPath, correctPath, deathPath, wrongChoice, correctChoice);
+  while(decision === false){
+    alert("GAME OVER!")
+    alert("Welcome Hercules! Click OK to begin your Quest for King Eurystheus");
+    decision = choice(firstPath, correctPath, deathPath, wrongChoice, correctChoice);
+  }runGame(decision, monsterARunGame, monsterHRunGame);
+}
 
 
+let levelOne = runGameReal(firstDecision, firstChoice, choiceLion, choiceHydra, choiceHigh, choiceLow, lionAttack, lionHealth)
+
+let levelTwo = runGameReal(secondDecision, roadToHydra, hydraChoice, hydraForrest, choiceCharge, choiceLure, hydraAttack, hydraHealth);
+
+let levelThree = runGameReal(thirdDecision, finalDestination, mountOssa, lakePrespa, wrongWay, pathToGlory, cerberusAttack, cerberusHealth)
 
 
 
