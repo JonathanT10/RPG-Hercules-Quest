@@ -116,20 +116,6 @@ let lakePrespa = ("You wade into the lake were the portal to the underworld is h
 let pathToGlory = ("As you travel through the cave, you begin to hear the panting of Cerberus.\n This will be quite the battle, you must defeat Cerberus to capture the creature!")
 
 
-// let firstDecision = choice(firstChoice, choiceLion, choiceHydra, choiceHigh, choiceLow);
-// while(firstDecision === false){
-//   alert("GAME OVER!")
-//   alert("Welcome Hercules! Click OK to begin your Quest for King Eurystheus");
-//   firstDecision = choice(firstChoice, choiceLion, choiceHydra, choiceHigh, choiceLow);
-// }
-// runGame(firstDecision, lionAttack, lionHealth);
-// let secondDecision = choice(roadToHydra, hydraChoice, hydraForrest, choiceCharge, choiceLure);
-// let stopRunning = runGame(secondDecision, hydraAttack, hydraHealth);
-// console.log(stopRunning);
-// let thirdDecision = choice(finalDestination,  mountOssa, lakePrespa, wrongWay, pathToGlory);
-//runGame(thirdDecision, cerberusAttack, cerberusHealth);
-
-
 let firstDecision = choice(firstChoice, choiceLion, choiceHydra, choiceHigh, choiceLow);
 let levelOne = runGameReal(firstDecision, firstChoice, choiceLion, choiceHydra, choiceHigh, choiceLow, lionAttack, lionHealth)
 let secondDecision = choice(roadToHydra, hydraChoice, hydraForrest, choiceLure, choiceCharge);
